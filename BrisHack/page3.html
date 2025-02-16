@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page 3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            max-width: 1200px;  /* Increased width */
+            margin: 0 auto;    
+            padding: 40px;     /* Increased padding */
+            overflow-x: hidden;
+            background: linear-gradient(rgba(255, 255, 255, 0.97), rgba(255, 255, 255, 0.97)),
+                url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='50,20 80,50 50,80 20,50' fill='%2310B981' fill-opacity='0.1'/%3E%3C/svg%3E");
+            animation: gradientShift 15s ease infinite;
+        }
+
+        .content-wrapper {
+            width: 100%;
+            display: grid;
+            gap: 30px;         /* Increased gap */
+            padding: 20px 0;
+        }
+
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #10B981;
+            padding-bottom: 15px;
+            font-size: clamp(2rem, 5vw, 2.5rem);  /* Larger font size */
+            width: 100%;
+            position: relative;
+            transition: color 0.3s ease;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+        h1:hover {
+            color: #27ae60;
+        }
+        p {
+            margin: 25px 0;    /* Increased margin */
+            line-height: 1.8;  /* Increased line height */
+            font-size: 1.1rem; /* Larger font size */
+            max-width: 1000px; /* Control line length for readability */
+            position: relative;
+            padding: 10px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        p:hover {
+            background-color: #f8f9fa;
+            transform: scale(1.01);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        nav {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        a {
+            text-decoration: none;
+            color: #27ae60;
+            padding: 5px 10px;
+            border: 1px solid #27ae60;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            position: relative;
+            overflow: hidden;
+        }
+        a:hover {
+            background-color: #27ae60;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(39, 174, 96, 0.3);
+        }
+        a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--color-primary);
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.3s ease;
+            z-index: -1;
+        }
+        a:hover::before {
+            transform: scaleY(1);
+        }
+
+        @media (max-width: 1240px) {
+            body {
+                margin: 0 20px;
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                margin: 0 15px;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                margin: 10px;
+            }
+            nav {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            a {
+                text-align: center;
+            }
+        }
+
+        @keyframes textReveal {
+            0% { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); }
+            100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+        }
+
+        h1.animate {
+            animation: textReveal 1s ease forwards;
+        }
+
+        p::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--color-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        p:hover::after {
+            transform: scaleX(1);
+        }
+    </style>
+</head>
+<body>
+    <h1>This is Page 3</h1>
+    <p>And finally, this is the third page!</p>
+    <nav>
+        <a href="page1.html">Go to Page 1</a>
+        <a href="page2.html">Go to Page 2</a>
+    </nav>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const h1 = document.querySelector('h1');
+            h1.classList.add('animate');
+        });
+    </script>
+</body>
+</html> 

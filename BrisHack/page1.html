@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page 1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #fff;
+            max-width: 1200px;
+            overflow-x: hidden;
+            background: linear-gradient(rgba(255, 255, 255, 0.97), rgba(255, 255, 255, 0.97)),
+                url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10h80v80h-80z' fill='none' stroke='%2310B981' stroke-width='1' stroke-opacity='0.1'/%3E%3Cpath d='M50 10v80M10 50h80' stroke='%2310B981' stroke-width='1' stroke-opacity='0.1'/%3E%3C/svg%3E");
+            animation: circuitFlow 20s linear infinite;
+        }
+        .content-wrapper {
+            width: 100%;
+            display: grid;
+            gap: 30px;
+            padding: 20px 0;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #10B981;
+            padding-bottom: 15px;
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            position: relative;
+            transition: color 0.3s ease;
+            overflow: hidden;
+            width: 100%;
+        }
+        h1:hover {
+            color: #3498db;
+        }
+        h1::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--color-primary), transparent);
+            animation: scanline 2s linear infinite;
+        }
+        @keyframes scanline {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        p {
+            margin: 25px 0;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            position: relative;
+            padding: 10px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            max-width: 1000px;
+        }
+        p:hover {
+            background-color: #f8f9fa;
+            transform: scale(1.01);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        nav {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        a {
+            text-decoration: none;
+            color: #3498db;
+            padding: 5px 10px;
+            border: 1px solid #3498db;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            position: relative;
+            overflow: hidden;
+        }
+        a:hover {
+            background-color: #3498db;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+        }
+        a::before {
+            content: '>';
+            position: absolute;
+            left: -20px;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        a:hover::before {
+            left: -10px;
+            opacity: 1;
+        }
+        a:hover {
+            transform: translateX(10px);
+        }
+
+        @media (max-width: 1240px) {
+            body {
+                margin: 0 20px;
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                margin: 0 15px;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                margin: 10px;
+            }
+            nav {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            a {
+                text-align: center;
+            }
+        }
+
+        /* Circuit board animation */
+        @keyframes circuitFlow {
+            0% { background-position: 0px 0px; }
+            100% { background-position: 1000px 0px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>This is Page 1</h1>
+    <p>Welcome to the first page! This page contains some sample content.</p>
+    <nav>
+        <a href="page2.html">Go to Page 2</a>
+        <a href="page3.html">Go to Page 3</a>
+    </nav>
+</body>
+</html> 

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #fff;
+            max-width: 1200px;
+            overflow-x: hidden;
+            background: linear-gradient(rgba(255, 255, 255, 0.97), rgba(255, 255, 255, 0.97)),
+                url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 20c20 0 30 10 30 30s-10 30-30 30-30-10-30-30 10-30 30-30z' fill='%2310B981' fill-opacity='0.1'/%3E%3C/svg%3E");
+        }
+        .content-wrapper {
+            width: 100%;
+            display: grid;
+            gap: 30px;
+            padding: 20px 0;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #10B981;
+            padding-bottom: 15px;
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            position: relative;
+            transition: color 0.3s ease;
+            width: 100%;
+        }
+        h1:hover {
+            color: #e74c3c;
+        }
+        h1::before {
+            content: '🌱';
+            position: absolute;
+            left: -30px;
+            animation: leafFloat 3s ease-in-out infinite;
+        }
+        p {
+            margin: 25px 0;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            max-width: 1000px;
+            position: relative;
+            padding: 10px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            transform-origin: left;
+        }
+        p:hover {
+            background-color: #f8f9fa;
+            transform: scale(1.02);
+            color: var(--color-primary);
+        }
+        nav {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        a {
+            text-decoration: none;
+            color: #e74c3c;
+            padding: 5px 10px;
+            border: 1px solid #e74c3c;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            position: relative;
+            overflow: hidden;
+        }
+        a:hover {
+            background-color: #e74c3c;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(231, 76, 60, 0.3);
+        }
+        a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(231, 76, 60, 0.1);
+            transition: left 0.3s ease;
+        }
+        a:hover::before {
+            left: 0;
+        }
+        a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--color-primary);
+            transition: all 0.3s ease;
+        }
+        a:hover::after {
+            left: 0;
+            width: 100%;
+        }
+
+        @media (max-width: 1240px) {
+            body {
+                margin: 0 20px;
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                margin: 0 15px;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                margin: 10px;
+            }
+            nav {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            a {
+                text-align: center;
+            }
+        }
+
+        @keyframes leafFloat {
+            0%, 100% { transform: rotate(0deg) translateY(0); }
+            25% { transform: rotate(5deg) translateY(-5px); }
+            75% { transform: rotate(-5deg) translateY(5px); }
+        }
+    </style>
+</head>
+<body>
+    <h1>This is Page 2</h1>
+    <p>This is the second page with different content.</p>
+    <nav>
+        <a href="page1.html">Go to Page 1</a>
+        <a href="page3.html">Go to Page 3</a>
+    </nav>
+</body>
+</html> 

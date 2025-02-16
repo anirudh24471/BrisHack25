@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EcoTech BrisHack 2025</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Add Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base font settings */
+        :root {
+            --font-primary: 'Outfit', sans-serif;
+            --font-secondary: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: 
+                linear-gradient(rgba(240, 240, 240, 0.97), rgba(240, 240, 240, 0.97)),
+                url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cpath d='M50 20c-16.57 0-30 13.43-30 30s13.43 30 30 30 30-13.43 30-30-13.43-30-30-30zm0 50c-11.05 0-20-8.95-20-20s8.95-20 20-20 20 8.95 20 20-8.95 20-20 20z' fill='%2327ae60' fill-opacity='0.1'/%3E%3Cpath d='M80 10l10 10-10 10-10-10zM10 80l10 10-10 10-10-10z' fill='%233498db' fill-opacity='0.1'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        header {
+            background: linear-gradient(135deg, #27ae60 0%, #3498db 100%);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .navbar-logo {
+            font-family: var(--font-primary);
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 0.5rem 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .navbar-logo::before {
+            font-family: var(--font-secondary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: 4px;
+            opacity: 0.9;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-family: var(--font-secondary);
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.1);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        nav a:hover::before {
+            transform: translateX(0);
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+        .tech-icon, .eco-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            vertical-align: middle;
+            filter: brightness(0) invert(1);
+            opacity: 0.9;
+        }
+
+        /* Mobile menu button */
+        .menu-button {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 0 1rem;
+            }
+
+            .navbar-logo {
+                font-size: 1.8rem;
+            }
+
+            .navbar-logo::before {
+                font-size: 0.8rem;
+                letter-spacing: 3px;
+            }
+
+            .menu-button {
+                display: block;
+            }
+
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: linear-gradient(135deg, #27ae60 0%, #3498db 100%);
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+            }
+
+            nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            nav a {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* Add a subtle gradient animation to the header */
+        @keyframes gradientFlow {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        header {
+            background-size: 200% 200%;
+            animation: gradientFlow 15s ease infinite;
+        }
+
+        main {
+            flex: 1;
+            padding: 20px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-primary);
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .iframe-wrapper {
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .iframe-wrapper:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        iframe {
+            width: 100%;
+            height: 400px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .bottom-frame {
+            grid-column: 1 / -1;
+            text-align: center;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #2c3e50 0%, #27ae60 100%);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: auto;
+            position: relative;
+            overflow: hidden;
+            font-family: var(--font-body);
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1' stroke-opacity='0.1'%3E%3Cpath d='M50 0v100M0 50h100'/%3E%3Ccircle cx='50' cy='50' r='40'/%3E%3Cpath d='M50 10l40 40-40 40-40-40z'/%3E%3C/g%3E%3C/svg%3E");
+            animation: footerPattern 20s linear infinite;
+        }
+
+        @keyframes footerPattern {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 100px 100px;
+            }
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+            position: relative;
+            transition: color 0.3s ease;
+            font-family: var(--font-secondary);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .social-links a:hover {
+            color: #3498db;
+            text-decoration: none;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                gap: 15px;
+                padding: 10px;
+            }
+            
+            iframe {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .bottom-frame {
+                grid-column: 1;
+            }
+
+            .iframe-wrapper {
+                padding: 8px;
+            }
+
+            iframe {
+                height: 300px;
+            }
+
+            .header-content {
+                padding: 0 10px;
+            }
+
+            .logo {
+                width: 40px;
+                height: 40px;
+            }
+
+            .logo-text {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header nav a {
+                margin: 0 5px;
+                padding: 5px;
+                font-size: 14px;
+            }
+
+            .social-links a {
+                margin: 0 5px;
+                font-size: 14px;
+            }
+
+            iframe {
+                height: 250px;
+            }
+        }
+
+        .iframe-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%233498db' stroke-width='1' stroke-opacity='0.05'%3E%3Cpath d='M30 10v40M10 30h40'/%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3Cpath d='M0 0l60 60M60 0L0 60' stroke='%2327ae60' stroke-opacity='0.05'/%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .iframe-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%2327ae60' stroke-width='1' stroke-opacity='0.05'%3E%3Cpath d='M0 20h40M20 0v40'/%3E%3Ccircle cx='20' cy='20' r='10'/%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .iframe-wrapper:hover::after {
+            opacity: 1;
+        }
+
+        .container::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at top right, 
+                rgba(39, 174, 96, 0.05), 
+                rgba(52, 152, 219, 0.05));
+            pointer-events: none;
+        }
+
+        .eco-icon {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            margin-right: 5px;
+            vertical-align: middle;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2327ae60' d='M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66C6.37 19.82 8.2 16 12 16c1.35 0 2.4-.56 3.24-1.44C13.5 15.46 11.5 16 9 16c1.73-1.84 3.2-3.54 4.44-5.07C15.24 8.99 16.62 7 17 8zM2 2v2h20V2H2z'/%3E%3C/svg%3E");
+        }
+
+        .tech-icon {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            margin-right: 5px;
+            vertical-align: middle;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%233498db' d='M20 3H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h3l-1 1v2h12v-2l-1-1h3c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 13H4V5h16v11z'/%3E%3C/svg%3E");
+        }
+
+        .nav-icon {
+            margin-right: 5px;
+        }
+
+        /* Add a subtle pulse animation to icons */
+        .tech-icon, .eco-icon {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Add eco-tech themed pulse effect to the logo */
+        @keyframes ecoPulse {
+            0% {
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            }
+            50% {
+                box-shadow: 0 4px 25px rgba(46, 204, 113, 0.4),
+                           0 4px 25px rgba(52, 152, 219, 0.4);
+            }
+            100% {
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            }
+        }
+
+        .navbar-logo {
+            animation: ecoPulse 3s infinite;
+        }
+
+        /* Enhanced text rendering for modern browsers */
+        @supports (font-synthesis: none) {
+            body {
+                font-synthesis: none;
+            }
+        }
+
+        /* Font loading optimization */
+        .fonts-loaded body {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Font fallback system */
+        @font-face {
+            font-family: 'Outfit-fallback';
+            size-adjust: 105%;
+            ascent-override: 90%;
+            src: local('Arial');
+        }
+
+        @font-face {
+            font-family: 'Space-Grotesk-fallback';
+            size-adjust: 102%;
+            ascent-override: 92%;
+            src: local('Helvetica');
+        }
+
+        /* Floating animation for cards */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Shine effect animation */
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        /* Pulse animation */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        /* Loading animation */
+        @keyframes loadingBar {
+            0% { transform: scaleX(0); }
+            100% { transform: scaleX(1); }
+        }
+
+        /* Fade in up animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        /* Rest of your existing styles */
+        
+        /* Fix for iframe wrapper animations */
+        .iframe-wrapper {
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+            animation-delay: calc(var(--animation-order, 0) * 0.2s);
+            opacity: 0;
+        }
+
+        .iframe-wrapper.fade-in-up {
+            opacity: 1;
+        }
+
+        /* Fix for navigation on mobile */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--color-white);
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                padding: 1rem;
+            }
+
+            nav.active {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .menu-button {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="navbar-logo">EcoTech 2025</div>
+            <button class="menu-button" aria-label="Toggle navigation menu">☰</button>
+            <nav>
+                <a href="#home"><span class="tech-icon"></span>Home</a>
+                <a href="#about"><span class="eco-icon"></span>About</a>
+                <a href="#contact"><span class="tech-icon"></span>Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="iframe-wrapper">
+            <iframe src="page1.html" title="Page 1"></iframe>
+        </div>
+        <div class="iframe-wrapper">
+            <iframe src="page2.html" title="Page 2"></iframe>
+        </div>
+        <div class="iframe-wrapper bottom-frame">
+            <iframe src="page3.html" title="Page 3"></iframe>
+        </div>
+    </main>
+
+    <footer>
+        <div class="social-links">
+            <a href="#"><span class="tech-icon"></span>Facebook</a>
+            <a href="#"><span class="tech-icon"></span>Twitter</a>
+            <a href="#"><span class="eco-icon"></span>Instagram</a>
+            <a href="#"><span class="tech-icon"></span>LinkedIn</a>
+        </div>
+        <p><span class="eco-icon"></span>© 2024 EcoTech BrisHack. All rights reserved.</p>
+        <p><span class="tech-icon"></span>Contact us: example@email.com</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuButton = document.querySelector('.menu-button');
+            const nav = document.querySelector('nav');
+
+            menuButton.addEventListener('click', function() {
+                nav.classList.toggle('active');
+                menuButton.setAttribute('aria-expanded', 
+                    nav.classList.contains('active').toString());
+            });
+
+            // Scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '20px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in-up');
+                        observer.unobserve(entry.target); // Stop observing once animated
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all iframe wrappers
+            document.querySelectorAll('.iframe-wrapper').forEach((el, index) => {
+                el.style.setProperty('--animation-order', index);
+                observer.observe(el);
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('nav');
+            const menuButton = document.querySelector('.menu-button');
+            if (nav.classList.contains('active') && 
+                !nav.contains(event.target) && 
+                !menuButton.contains(event.target)) {
+                nav.classList.remove('active');
+                menuButton.setAttribute('aria-expanded', 'false');
+            }
+        });
+    </script>
+</body>
+</html> 
