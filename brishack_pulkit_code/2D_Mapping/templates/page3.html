@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trash Detection</title>
+    <style>
+        table {
+            width: 250px; /* Adjust width as needed */
+            border-collapse: collapse;
+            margin: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        a {
+            text-decoration: none;
+            color: blue;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Detected Trash and Carbon Footprint</h2>
+    <table id="trashTable">
+        <tr>
+            <th>Detected Trash</th>
+            <th>Understand the Carbon Footprint</th>
+        </tr>
+    </table>
+
+    <script>
+        function updateTable() {
+            let table = document.getElementById("trashTable");
+            let newRow = table.insertRow(-1); // Append new row
+
+            let cell1 = newRow.insertCell(0);
+            let cell2 = newRow.insertCell(1);
+
+            cell1.innerHTML = "Plastic";
+            cell2.innerHTML = '<a href="footprint.html" target="_blank">Footprint</a>';
+        }
+
+        // Set delay of 3 seconds before updating the table
+        setTimeout(updateTable, 8000);
+    </script>
+
+</body>
+</html>

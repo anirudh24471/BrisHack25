@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Footprint and Recycled Waste Use Cases</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #4CAF50;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+        }
+        input[type="number"], select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            background-color: #eef9ee;
+            padding: 10px;
+            margin-top: 20px;
+            border: 1px solid #4CAF50;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .upload-section {
+            margin-top: 20px;
+        }
+        .upload-section input[type="file"] {
+            padding: 5px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #4CAF50;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Carbon Footprint Calculator & Recycled Waste Use Cases</h1>
+    </header>
+
+    <div class="container">
+        <h2>Calculate Your Carbon Footprint</h2>
+        <div class="form-group">
+            <label for="material">Select Material Type</label>
+            <select id="material">
+                <option value="cardboard">Cardboard</option>
+                <option value="plastic">Plastic</option>
+                <option value="concrete">Concrete</option>
+                <option value="biodegradable">Biodegradable</option>
+                <option value="paper">Paper</option>
+                <option value="metal">Metal</option>
+                <option value="rubber">Rubber</option>
+                <option value="clothes">Clothes</option>
+                <option value="ewaste">E-waste</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="amount">Enter Quantity (kg)</label>
+            <input type="number" id="amount" placeholder="Enter quantity in kg" required>
+        </div>
+        <button onclick="calculateCarbonFootprint()">Calculate Carbon Footprint</button>
+
+        <div class="result" id="result" style="display:none;"></div>
+
+        <div class="upload-section">
+            <label for="upload">Upload an Image of the Material (Optional)</label>
+            <input type="file" id="upload" onchange="displayImage(event)">
+            <p>Uploaded Image:</p>
+            <img id="uploadedImage" style="max-width: 100%; margin-top: 10px; display:none;" />
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Eco Solutions</p>
+    </footer>
+
+    <script>
+        // Carbon Footprint Calculation based on Material Types
+        const carbonFootprintPerKg = {
+            cardboard: 0.1,
+            plastic: 6.0,
+            concrete: 0.09,
+            biodegradable: 0.05,
+            paper: 0.02,
+            metal: 8.0,
+            rubber: 3.5,
+            clothes: 2.5,
+            ewaste: 10.0
+        };
+
+        function calculateCarbonFootprint() {
+            const material = document.getElementById('material').value;
+            const amount = parseFloat(document.getElementById('amount').value);
+            if (isNaN(amount) || amount <= 0) {
+                alert('Please enter a valid quantity.');
+                return;
+            }
+
+            const footprint = carbonFootprintPerKg[material] * amount;
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = `The carbon footprint of ${amount} kg of ${material} is: <strong>${footprint.toFixed(2)} kg CO2</strong>`;
+        }
+
+        function displayImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const imageElement = document.getElementById('uploadedImage');
+                    imageElement.src = e.target.result;
+                    imageElement.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+
+</body>
+</html>

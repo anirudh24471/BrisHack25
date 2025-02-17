@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Circles</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('{{ url_for("static", filename="map.jpeg") }}'); /* Flask static URL */
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="background"></div>
+
+    <script>
+        const circlePositions = {{ circles | tojson | safe }};
+        let circleElements = [];
+
+        function createCircles() {
+            const container = document.getElementById('background');
+            container.innerHTML = ""; // Clear old circles
+
+            circlePositions.forEach(position => {
+                let circle = document.createElement('div');
+                circle.classList.add('circle');
+                
+                let x = position[0]; 
+                let y = position[1];
+
+                circle.style.left = `${x}px`;
+                circle.style.top = `${y}px`;
+
+                container.appendChild(circle);
+                circleElements.push(circle);
+            });
+
+            updateCircles(); // Fetch sizes initially
+        }
+
+        function updateCircles() {
+            fetch('/get_sizes')
+                .then(response => response.json())
+                .then(data => {
+                    data.sizes.forEach((size, index) => {
+                        circleElements[index].style.width = `${size}px`;
+                        circleElements[index].style.height = `${size}px`;
+                        circleElements[index].style.backgroundColor = data.colors[index];
+                    });
+                });
+        }
+
+        window.onload = () => {
+            createCircles();
+            setInterval(updateCircles, 5000); // Update every 5 seconds
+        };
+    </script>
+</body>
+</html>
