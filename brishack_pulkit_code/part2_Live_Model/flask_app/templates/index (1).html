@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Classifier</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/framer-motion/10.13.1/framer-motion.umd.min.js"></script>
+    <style>
+        body {
+            background: linear-gradient(270deg, #4E8A4F, #2C3E50, #A8D5BA, #4E8A4F);
+            background-size: 400% 400%;
+            animation: ecoGradientBG 10s ease infinite;
+            font-family: Arial, sans-serif;
+        }
+        
+        @keyframes ecoGradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .glass:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Matching Box Colors */
+        .box {
+            background-color: #2C3E50; /* Deep Teal */
+            color: white;
+        }
+
+        /* Button styles */
+        .form-btn {
+            background-color: #A8D5BA; /* Mint Green */
+            color: #2C6A4B; /* Dark Green */
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .form-btn:hover {
+            background-color: #8FCBA8; /* Darker Mint Green */
+        }
+
+        .section-heading {
+            font-family: 'Arial', sans-serif;
+            font-weight: 800;
+            color: #e0f2f1;
+        }
+
+        .text-muted {
+            color: rgba(255, 255, 255, 0.6);
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen w-full overflow-hidden px-6 text-white">
+    
+    <!-- Live Video Feed Section -->
+    <div class="w-full max-w-xl p-8 glass text-center border border-gray-700 mt-8 box">
+        <h1 class="text-4xl section-heading text-green-400 mb-4">Live Video Object Detection</h1>
+        <p class="text-muted text-lg mb-4">Analyze objects in real-time with AI-powered detection.</p>
+        <button onclick="startVideo()" class="form-btn w-full mb-4">Start Live Feed</button>
+        <div class="relative w-full overflow-hidden mt-4">
+            <img id="videoStream" src="" class="hidden max-w-full mx-auto rounded-md shadow-lg border-4 border-green-500 transition-all transform hover:scale-105">
+            <h2 id="livePrediction" class="hidden text-2xl font-semibold mt-3 text-yellow-400">Prediction: </h2>
+        </div>
+    </div>
+
+    <!-- Image Classification Section -->
+    <div class="w-full max-w-lg p-6 glass text-center border border-gray-700 mt-8 box">
+        <h1 class="text-3xl section-heading text-indigo-400 mb-4">Upload an Image for Classification</h1>
+        <p class="text-muted text-md mb-4">Use AI to classify your image instantly!</p>
+        <form action="/" method="post" enctype="multipart/form-data" class="space-y-4">
+            <input type="file" name="file" required class="block w-full text-md text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-md file:font-semibold file:bg-indigo-600 file:text-white hover:file:bg-indigo-500 transition-all">
+            <button type="submit" class="form-btn w-full">Upload</button>
+        </form>
+    
+        {% if image %}
+            <div class="mt-4">
+                <h2 class="text-2xl font-semibold text-green-400">Prediction: {{ label }} ({{ confidence*100|round(2) }}%)</h2>
+                <img src="{{ image }}" alt="Uploaded Image" class="mt-4 rounded-md shadow-lg max-w-xs mx-auto border-4 border-indigo-500 transition-all transform hover:scale-105">
+            </div>
+        {% endif %}
+    </div>
+    
+    <script>
+        function startVideo() {
+            document.getElementById("videoStream").src = "{{ url_for('video_feed') }}";
+            document.getElementById("videoStream").classList.remove("hidden");
+            document.getElementById("livePrediction").classList.remove("hidden");
+            updatePrediction();
+        }
+        
+        function updatePrediction() {
+            setInterval(async () => {
+                let response = await fetch("{{ url_for('video_feed') }}");
+                let text = await response.text();
+                let label = text.match(/([A-Za-z]+ \(\d+\.\d+\))/);
+                if (label) {
+                    document.getElementById("livePrediction").innerText = "Prediction: " + label[1];
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
