@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room</title>
+    <h3>Live Tracking</h3>
+    <style>
+        .room {
+            width: 600px;
+            height: 300px;
+            border: 5px solid black;
+            margin: 50px auto;
+            background-color: lightgray;
+            position: relative;
+            overflow: hidden;
+        }
+        .ugv {
+            width: 100px;
+            height: 60px;
+            border: 2px solid green;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 12px;
+            font-weight: bold;
+            color: black;
+        }
+        .ugv .frame {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            border: 2px solid green;
+        }
+        .ugv .wheel {
+            width: 20px;
+            height: 20px;
+            border-radius: 5px;
+            border: 2px solid green;
+            position: absolute;
+            background-color: white;
+        }
+        .ugv .wheel.top-left { top: -10px; left: -10px; }
+        .ugv .wheel.top-right { top: -10px; right: -10px; }
+        .ugv .wheel.bottom-left { bottom: -10px; left: -10px; }
+        .ugv .wheel.bottom-right { bottom: -10px; right: -10px; }
+        .ugv .steering-wheel {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid black;
+            position: absolute;
+            top: 18px;
+            left: 85%;
+            transform: translateX(-50%);
+            background-color: gray;
+        }
+        .cross {
+            width: 20px;
+            height: 20px;
+            background-color: green;
+            position: absolute;
+            display: none;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+        }
+    </style>
+    <script>
+        let position = 10;
+        let stepSize = 0.6; // Slow movement speed
+
+        function moveUGV() {
+            let ugv = document.querySelector('.ugv');
+            let room = document.querySelector('.room');
+            let cross = document.createElement('div');
+            cross.classList.add('cross');
+            room.appendChild(cross);
+
+            let maxPosition = room.clientWidth - ugv.clientWidth - 10;
+            let detectionPosition = room.clientWidth / 2; // Detection happens here
+            let crossPlaced = false;
+
+            function move() {
+                if (position < maxPosition) {
+                    position += stepSize;
+                    ugv.style.left = position + 'px';
+                    
+                    // Place the green dot when the rover reaches detection position
+                    if (!crossPlaced && position >= detectionPosition) {
+                        cross.style.left = position + 'px';  // Same X position as the rover
+                        cross.style.top = '10px';  // Near top boundary
+                        cross.style.display = 'block';
+                        crossPlaced = true;
+                    }
+
+                    requestAnimationFrame(move);
+                }
+            }
+            move();
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            moveUGV();
+        });
+    </script>
+</head>
+<body>
+    <div class="room">
+        <div class="ugv">
+            <div class="frame"></div>
+            <div class="wheel top-left"></div>
+            <div class="wheel top-right"></div>
+            <div class="wheel bottom-left"></div>
+            <div class="wheel bottom-right"></div>
+            <div class="steering-wheel"></div>
+            Unmanned<br>Ground<br>Vehicle
+        </div>
+    </div>
+    <textarea name="instructions" id="camera_URL" cols="30" rows="1">put in camera URL</textarea>
+</body>
+</html>

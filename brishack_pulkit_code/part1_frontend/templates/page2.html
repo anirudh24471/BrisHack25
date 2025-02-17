@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video in Canvas</title>
+</head>
+<body>
+    <h4>Live Feed Sample Video Run</h4>
+    <canvas id="videoCanvas" width="300" height="400"></canvas>
+    <video id="video" loop autoplay muted style="display: none;">
+        <source src="sample.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <script>
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('videoCanvas');
+        const ctx = canvas.getContext('2d');
+
+        video.play();
+
+        function drawVideo() {
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            requestAnimationFrame(drawVideo);
+        }
+
+        video.addEventListener('play', drawVideo);
+    </script>
+</body>
+</html>
