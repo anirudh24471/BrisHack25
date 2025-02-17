@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Classification</title>
+</head>
+<body>
+    <h1>Upload an Image for Classification</h1>
+    <form action="/" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <button type="submit">Upload</button>
+    </form>
+    
+    {% if image %}
+        <h2>Prediction: {{ label }} ({{ confidence*100|round(2) }}%)</h2>
+        <img src="{{ image }}" alt="Uploaded Image" style="max-width: 300px;">
+    {% endif %}
+    
+    <h1>Live Video Object Detection</h1>
+    <button onclick="startVideo()">Start Live Feed</button>
+    <br><br>
+    <img id="videoStream" src="" style="display:none; max-width: 600px;">
+    <h2 id="livePrediction" style="display:none;">Prediction: </h2>
+    
+    <script>
+        function startVideo() {
+            document.getElementById("videoStream").src = "{{ url_for('video_feed') }}";
+            document.getElementById("videoStream").style.display = "block";
+            document.getElementById("livePrediction").style.display = "block";
+            updatePrediction();
+        }
+        
+        function updatePrediction() {
+            setInterval(async () => {
+                let response = await fetch("{{ url_for('video_feed') }}");
+                let text = await response.text();
+                let label = text.match(/([A-Za-z]+ \(\d+\.\d+\))/);
+                if (label) {
+                    document.getElementById("livePrediction").innerText = "Prediction: " + label[1];
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
