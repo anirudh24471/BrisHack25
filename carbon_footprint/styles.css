@@ -1,0 +1,126 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body */
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background-color: #2d3e50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+}
+
+/* Carbon Footprint Section */
+.carbon-footprint {
+    padding: 40px;
+    background-color: #ffffff;
+    margin: 20px 0;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.carbon-footprint h2 {
+    font-size: 2rem;
+    color: #2d3e50;
+    margin-bottom: 10px;
+}
+
+.result {
+    background-color: #e5f0f7;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: #2d3e50;
+}
+
+/* Alternatives Section */
+.alternatives {
+    padding: 40px;
+    background-color: #eaf7e5;
+}
+
+.alternatives h2 {
+    font-size: 2rem;
+    text-align: center;
+    color: #2d3e50;
+    margin-bottom: 30px;
+}
+
+.alternatives-list {
+    display: flex;
+    justify-content: space-between;
+}
+
+.alternative-card {
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    width: 45%;
+    text-align: center;
+}
+
+.alternative-card h3 {
+    font-size: 1.5rem;
+    color: #2d3e50;
+}
+
+.alternative-card ul {
+    list-style-type: none;
+    margin-top: 10px;
+}
+
+.alternative-card li {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+/* Plastic Awareness Section */
+.plastic-awareness {
+    padding: 40px;
+    background-color: #f7e5e5;
+}
+
+.plastic-awareness h2 {
+    font-size: 2rem;
+    text-align: center;
+    color: #d80000;
+    margin-bottom: 30px;
+}
+
+.plastic-images {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.plastic-images img {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+footer {
+    background-color: #2d3e50;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
