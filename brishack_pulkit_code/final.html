@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrisHack 2025 | Eco Tech Warriors</title>
+    <style>
+        /* Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #3ba55c, #1e7d34);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Glassmorphism Container */
+        .container {
+            width: 90%;
+            max-width: 700px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        header p {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .team-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #f1f8e9;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .hackathon-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #c8e6c9;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .button-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .btn {
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 16px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 10px;
+            transition: 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Background Animation */
+        .background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+            top: 0;
+            left: 0;
+        }
+
+        .background div {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: float 8s infinite linear;
+        }
+
+        .background div:nth-child(1) {
+            width: 60px;
+            height: 60px;
+            top: 10%;
+            left: 20%;
+            animation-duration: 7s;
+        }
+
+        .background div:nth-child(2) {
+            width: 80px;
+            height: 80px;
+            top: 40%;
+            left: 60%;
+            animation-duration: 10s;
+        }
+
+        .background div:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            top: 70%;
+            left: 80%;
+            animation-duration: 12s;
+        }
+
+        .background div:nth-child(4) {
+            width: 50px;
+            height: 50px;
+            top: 20%;
+            left: 75%;
+            animation-duration: 9s;
+        }
+
+        .background div:nth-child(5) {
+            width: 90px;
+            height: 90px;
+            top: 30%;
+            left: 35%;
+            animation-duration: 8s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+                opacity: 0.7;
+            }
+            50% {
+                transform: translateY(-20px);
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(0px);
+                opacity: 0.7;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="hackathon-name">BrisHack 2025</div>
+            <div class="team-name">Eco Tech Warriors</div>
+            <h1>Eco Hackathon Dashboard</h1>
+            <p>Explore our innovative eco-friendly projects</p>
+        </header>
+        <main>
+            <div class="button-grid">
+                <a href="file:///Users/pulkit/Desktop/brishack_pulkit_code/part1_frontend/templates/index.html" class="btn" target="_blank">♻️ Trash Segregation</a>
+                <a href="http://127.0.0.1:5000/" class="btn" target="_blank">🌱 Waste Detection</a>
+                <a href="http://127.0.0.1:5080/" class="btn" target="_blank">🔋 Crowd Density</a>           
+                <a href="http://127.0.0.1:3000/" class="btn" target="_blank">📍 Crowd Mapping</a>
+            </div>
+        </main>
+        <footer>
+            <p>🚀 Built for a sustainable future | BrisHack 2025</p>
+        </footer>
+    </div>
+</body>
+</html>
