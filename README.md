@@ -3,11 +3,12 @@
 
 <p align="center">
 AI-driven Smart Waste & Crowd Management System <br>
-<b>Built at BrisHack 2025 | University of Bristol</b>
+<b>Built at BrisHack 2025 | University of Bristol</b><br>
+🏆 Winner of the <strong>People's Choice Award</strong> 🏆
 </p>
 
 <p align="center">
-  <a href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID"><img src="https://img.shields.io/badge/Demo-YouTube-red?logo=youtube&style=for-the-badge"></a>
+  <a href="https://www.youtube.com/watch?v=gc2FB5fovi8"><img src="https://img.shields.io/badge/Demo-YouTube-red?logo=youtube&style=for-the-badge"></a>
   <a href="https://github.com/anirudh24471/BrisHack25"><img src="https://img.shields.io/github/stars/anirudh24471/BrisHack25?style=for-the-badge"></a>
   <a href="https://github.com/anirudh24471/BrisHack25/blob/main/LICENSE"><img src="https://img.shields.io/github/license/anirudh24471/BrisHack25?style=for-the-badge"></a>
 </p>
@@ -27,8 +28,8 @@ AI-driven Smart Waste & Crowd Management System <br>
 
 ## 🎬 Live Demo
 
-Watch the full demo on YouTube:  
-📺 [Click to Watch](https://youtu.be/gc2FB5fovi8)
+📺 Watch the full demo on YouTube:  
+[Click to Watch](https://youtu.be/gc2FB5fovi8)
 
 ---
 
@@ -62,8 +63,22 @@ Watch the full demo on YouTube:
 - Displays live feed from camera.
 - Dynamic counters and environmental alerts.
 
+---
 
-## TF Model location
-!wget[https://drive.google.com/drive/folders/15zB7jCZlWpAKdTBh0wyqHoGAN0Rse64d?usp=sharing]
+## 📦 Model Files
 
+The trained TensorFlow models can be accessed here:  
+🔗 [Download from Google Drive](https://drive.google.com/drive/folders/15zB7jCZlWpAKdTBh0wyqHoGAN0Rse64d?usp=sharing)
+
+---
+
+## 👨‍💻 Team
+
+This project was developed by:
+
+- **Aryan Lodha**  
+- **Pulkit Dhingra**  
+- **Anirudh Jain**  
+- **Shaivya Shankar**  
+- **Bhushan**
 ---
