@@ -1,11 +1,6 @@
-# BrisHack25
-<h1 align="center">🌍 EcoVision</h1>
-
-<p align="center">
-AI-driven Smart Waste & Crowd Management System <br>
-<b>Built at BrisHack 2025 | University of Bristol</b><br>
-🏆 Winner of the <strong>People's Choice Award</strong> 🏆
-</p>
+# 🌍 EcoVision — BrisHack25  
+**AI-Driven Smart Waste & Crowd Management System**  
+🏆 **Winner — People's Choice Award | University of Bristol, BrisHack 2025**  
 
 <p align="center">
   <a href="https://www.youtube.com/watch?v=gc2FB5fovi8"><img src="https://img.shields.io/badge/Demo-YouTube-red?logo=youtube&style=for-the-badge"></a>
@@ -15,21 +10,22 @@ AI-driven Smart Waste & Crowd Management System <br>
 
 ---
 
-## 🚀 Overview
+## 🚀 Executive Summary
+**EcoVision** is an AI-powered platform tackling **smart city environmental management** by integrating **real-time computer vision, crowd analytics, and sustainability metrics** into a single responsive dashboard.
 
-**EcoVision** is a comprehensive AI-powered platform designed to address environmental and public space management challenges in smart cities. It combines real-time computer vision, sustainability analytics, and responsive UI to enable:
+It enables:
+- 🗑️ **Automated Trash Segregation & Waste Detection**  
+- 🧍 **Real-Time Crowd Density Mapping & Flow Tracking**  
+- 🌱 **Carbon Footprint Estimation** based on live activity  
+- 📊 **Dynamic Visual Dashboards** for decision-making  
 
-- 🗑️ Automated **Trash Segregation & Waste Detection**  
-- 🧍‍♂️ Real-time **Crowd Density Mapping**  
-- 🌿 **Carbon Footprint Estimation** Based on Activity  
-- 🗺️ Dynamic **Crowd Flow Visualization**
+**Why it stands out:**  
+> Built in **under 24 hours** during BrisHack 2025, EcoVision won the **People’s Choice Award** for its innovation, functionality, and real-world applicability.
 
 ---
 
 ## 🎬 Live Demo
-
-📺 Watch the full demo on YouTube:  
-[Click to Watch](https://youtu.be/gc2FB5fovi8)
+📺 **Watch the full demo:** [YouTube Link](https://youtu.be/gc2FB5fovi8)  
 
 ---
 
@@ -38,47 +34,59 @@ AI-driven Smart Waste & Crowd Management System <br>
 | Layer               | Technologies Used                                    |
 |---------------------|------------------------------------------------------|
 | **Frontend**        | HTML5, CSS3, JavaScript                              |
-| **Backend**         | Python, Flask (optional extension)                   |
+| **Backend**         | Python, Flask *(optional extension for API)*         |
 | **Computer Vision** | TensorFlow, Keras, OpenCV                            |
-| **Visualization**   | JavaScript, Chart.js, HTML Dashboards                |
-| **DevOps**          | GitHub, CI/CD (optional for cloud deployment)        |
+| **Visualization**   | JavaScript, Chart.js, Custom HTML Dashboards         |
+| **Deployment**      | GitHub, CI/CD *(optional cloud-ready)*               |
 
 ---
 
-## 🧠 Features in Detail
+## 🧠 Key Features
 
 ### 🔍 Trash & Waste Detection
-- Identifies and classifies types of waste (e.g., plastic, organic).
-- Uses image recognition trained on waste datasets.
+- Classifies waste into categories (e.g., plastic, organic) using **custom-trained TensorFlow models**.
+- Enables automated sorting to support recycling initiatives.
 
 ### 🧍 Crowd Analysis
-- Detects people in frame using real-time object detection (YOLO/SSD).
-- Aggregates movement data for heatmap and density tracking.
+- Detects and counts individuals in real-time using YOLO/SSD-based object detection.
+- Generates **live heatmaps** and **crowd density metrics**.
 
 ### 🌱 Carbon Footprint Module
-- Estimates environmental impact based on detected activity.
-- Integrates simple carbon models based on regional data.
+- Estimates CO₂ emissions based on detected human activities.
+- Uses region-specific carbon models for accuracy.
 
-### 🌐 Real-time UI Dashboard
-- Displays live feed from camera.
-- Dynamic counters and environmental alerts.
+### 📊 Real-Time Dashboard
+- Displays **live camera feeds**, **waste statistics**, and **environmental alerts**.
+- Interactive graphs powered by **Chart.js**.
 
 ---
 
 ## 📦 Model Files
+Access trained TensorFlow models here:  
+🔗 [Google Drive Folder](https://drive.google.com/drive/folders/15zB7jCZlWpAKdTBh0wyqHoGAN0Rse64d?usp=sharing)
 
-The trained TensorFlow models can be accessed here:  
-🔗 [Download from Google Drive](https://drive.google.com/drive/folders/15zB7jCZlWpAKdTBh0wyqHoGAN0Rse64d?usp=sharing)
+---
+
+## 🏆 Hackathon Context
+- **Event:** BrisHack 2025, University of Bristol  
+- **Duration:** 24 hours  
+- **Award:** People's Choice Award 🏅  
+- **Challenge Solved:** Real-time smart city monitoring for sustainability  
 
 ---
 
 ## 👨‍💻 Team
+| Name | Role |
+|------|------|
+| Aryan Lodha | Computer Vision & AI Models |
+| Pulkit Dhingra | Frontend & Visualization |
+| Anirudh Jain | Backend Integration |
+| Shaivya Shankar | Data Processing & Analytics |
+| Bhushan | Research & Model Training |
 
-This project was developed by:
+---
 
-- **Aryan Lodha**  
-- **Pulkit Dhingra**  
-- **Anirudh Jain**  
-- **Shaivya Shankar**  
-- **Bhushan**
+## 📌 Impact Statement
+This project showcases our ability to **design, prototype, and deploy** an **AI-powered IoT solution** under extreme time constraints. It demonstrates expertise in **computer vision, sustainability analytics, dashboard UI/UX, and rapid problem-solving** — skills directly relevant to real-world smart city challenges.
+
 ---
